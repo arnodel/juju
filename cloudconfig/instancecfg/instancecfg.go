@@ -719,6 +719,12 @@ func (cfg *BootstrapConfig) VerifyConfig() (err error) {
 	if cfg.StateServingInfo.APIPort == 0 {
 		return errors.New("missing API port")
 	}
+	if cfg.StateServingInfo.GrpcAPIPort == 0 {
+		return errors.New("missing gRPC API port")
+	}
+	if cfg.StateServingInfo.GrpcGatewayAPIPort == 0 {
+		return errors.New("missing gRPC gateway API port")
+	}
 	if cfg.BootstrapMachineInstanceId == "" {
 		return errors.New("missing bootstrap machine instance ID")
 	}

@@ -556,6 +556,12 @@ func NewStateMachineConfig(configParams AgentConfigParams, serverInfo controller
 	if serverInfo.APIPort == 0 {
 		return nil, errors.Trace(requiredError("api port"))
 	}
+	if serverInfo.GrpcAPIPort == 0 {
+		return nil, errors.Trace(requiredError("grpc api port"))
+	}
+	if serverInfo.GrpcGatewayAPIPort == 0 {
+		return nil, errors.Trace(requiredError("grpc gateway api port"))
+	}
 	config, err := NewAgentConfig(configParams)
 	if err != nil {
 		return nil, err

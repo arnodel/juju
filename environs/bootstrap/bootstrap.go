@@ -751,11 +751,13 @@ func finalizeInstanceBootstrapConfig(
 	}
 
 	icfg.Bootstrap.StateServingInfo = controller.StateServingInfo{
-		StatePort:    controllerCfg.StatePort(),
-		APIPort:      controllerCfg.APIPort(),
-		Cert:         string(cert),
-		PrivateKey:   string(key),
-		CAPrivateKey: args.CAPrivateKey,
+		StatePort:          controllerCfg.StatePort(),
+		APIPort:            controllerCfg.APIPort(),
+		GrpcAPIPort:        controllerCfg.GrpcAPIPort(),
+		GrpcGatewayAPIPort: controllerCfg.GrpcGatewayAPIPort(),
+		Cert:               string(cert),
+		PrivateKey:         string(key),
+		CAPrivateKey:       args.CAPrivateKey,
 	}
 	vers, ok := cfg.AgentVersion()
 	if !ok {
@@ -827,11 +829,13 @@ func finalizePodBootstrapConfig(
 	}
 
 	pcfg.Bootstrap.StateServingInfo = controller.StateServingInfo{
-		StatePort:    controllerCfg.StatePort(),
-		APIPort:      controllerCfg.APIPort(),
-		Cert:         string(cert),
-		PrivateKey:   string(key),
-		CAPrivateKey: args.CAPrivateKey,
+		StatePort:          controllerCfg.StatePort(),
+		APIPort:            controllerCfg.APIPort(),
+		GrpcAPIPort:        controllerCfg.GrpcAPIPort(),
+		GrpcGatewayAPIPort: controllerCfg.GrpcGatewayAPIPort(),
+		Cert:               string(cert),
+		PrivateKey:         string(key),
+		CAPrivateKey:       args.CAPrivateKey,
 	}
 	if _, ok := cfg.AgentVersion(); !ok {
 		return errors.New("controller model configuration has no agent-version")
